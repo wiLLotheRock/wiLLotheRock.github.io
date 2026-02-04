@@ -8,14 +8,14 @@ const CONFIG = {
     valentineName: "Daniela",
 
     // The title that appears in the browser tab
-    // You can use emojis! 💝 💖 💗 💓 💞 💕
+    // You can use emojis! 💝 💖 💗 💓 💞 💕 ❤️', '❤️', '🌻', '🌻', '⭐', '✨', '🌟'🫀
     pageTitle: "Quieres ser mi san valentin? :p 💝",
 
     // Floating emojis that appear in the background
     // Find more emojis at: https://emojipedia.org
     floatingEmojis: {
-        hearts: ['❤️', '❤️', '🌻', '🌻', '⭐', '✨', '🌟'],  // Heart emojis
-        bears: ['🌻', '❤️', '⭐', '💫']                       // Cute bear emojis
+        hearts: ['🫀'],  // Heart emojis
+        bears: ['⭐']                       // Cute bear emojis
     },
 
     // Questions and answers
