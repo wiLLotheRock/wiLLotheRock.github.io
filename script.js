@@ -110,8 +110,8 @@ function createFloatingElements() {
 // Set random position for floating elements
 function setRandomPosition(element) {
     element.style.left = Math.random() * 100 + 'vw';
-    element.style.animationDelay = Math.random() * 5 + 's';
-    element.style.animationDuration = 10 + Math.random() * 20 + 's';
+    element.style.animationDelay = Math.random() * 2 + 's';
+    element.style.animationDuration = 8 + Math.random() * 4 + 's';
 }
 
 // Function to show next question
