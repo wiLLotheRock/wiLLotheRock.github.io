@@ -8,7 +8,7 @@ function validateConfig() {
     // Check required fields
     if (!config.valentineName) {
         warnings.push("Valentine's name is not set! Using default.");
-        config.valentineName = "My Love";
+        config.valentineName = "Mi amor :p";
     }
 
     // Validate colors
@@ -41,11 +41,11 @@ function validateConfig() {
 // Default color values
 function getDefaultColor(key) {
     const defaults = {
-        backgroundStart: "#ffafbd",
-        backgroundEnd: "#ffc3a0",
-        buttonBackground: "#ff6b6b",
-        buttonHover: "#ff8787",
-        textColor: "#ff4757"
+        backgroundStart: "#ff6e4a",
+        backgroundEnd: "#ce4b00",
+        buttonBackground: "#2c0092",
+        buttonHover: "#87fff5",
+        textColor: "#e7ff10"
     };
     return defaults[key];
 }
