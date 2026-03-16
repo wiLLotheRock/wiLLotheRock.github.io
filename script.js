@@ -195,10 +195,14 @@ const muteBtn = document.getElementById("muteBtn");
 
 bgMusic.volume = 0.45;
 
-muteBtn.addEventListener("click", () => {
-  bgMusic.muted = !bgMusic.muted;
+function updateMuteButton() {
   muteBtn.textContent = bgMusic.muted ? "🔇" : "🎵";
   muteBtn.setAttribute("aria-label", bgMusic.muted ? "Activar musica" : "Silenciar musica");
+}
+
+muteBtn.addEventListener("click", () => {
+  bgMusic.muted = !bgMusic.muted;
+  updateMuteButton();
 });
 
 openBookBtn.addEventListener("click", () => {
@@ -223,8 +227,104 @@ const mediaVideo   = document.getElementById("mediaVideo");
 const mediaCaption = document.getElementById("mediaCaption");
 const prevBtn      = document.getElementById("prevBtn");
 const nextBtn      = document.getElementById("nextBtn");
+const mediaLightbox = document.getElementById("mediaLightbox");
+const lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxVideo = document.getElementById("lightboxVideo");
 
 let currentPage = 0;
+let restoreBgMusicMutedState = null;
+
+function openLightbox(type, src) {
+  if (!src) {
+    return;
+  }
+
+  lightboxImage.hidden = true;
+  lightboxImage.removeAttribute("src");
+  lightboxVideo.hidden = true;
+  lightboxVideo.pause();
+  lightboxVideo.removeAttribute("src");
+  lightboxVideo.load();
+
+  if (type === "video") {
+    // Evita audio duplicado al mostrar el video en grande.
+    mediaVideo.pause();
+
+    restoreBgMusicMutedState = bgMusic.muted;
+    bgMusic.muted = true;
+    updateMuteButton();
+
+    lightboxVideo.hidden = false;
+    lightboxVideo.src = src;
+    lightboxVideo.muted = false;
+    lightboxVideo.defaultMuted = false;
+    lightboxVideo.currentTime = mediaVideo.currentTime || 0;
+    lightboxVideo.play().catch(() => {});
+  } else {
+    restoreBgMusicMutedState = null;
+    lightboxImage.hidden = false;
+    lightboxImage.src = src;
+  }
+
+  mediaLightbox.hidden = false;
+  mediaLightbox.setAttribute("aria-hidden", "false");
+  document.body.classList.add("is-lightbox-open");
+}
+
+function closeLightbox() {
+  if (mediaLightbox.hidden) {
+    return;
+  }
+
+  lightboxVideo.pause();
+  lightboxVideo.removeAttribute("src");
+  lightboxVideo.load();
+  lightboxVideo.hidden = true;
+
+  lightboxImage.removeAttribute("src");
+  lightboxImage.hidden = true;
+
+  if (restoreBgMusicMutedState !== null) {
+    bgMusic.muted = restoreBgMusicMutedState;
+    updateMuteButton();
+    restoreBgMusicMutedState = null;
+
+    if (!mediaVideo.hidden && mediaVideo.src) {
+      mediaVideo.play().catch(() => {});
+    }
+  }
+
+  mediaLightbox.setAttribute("aria-hidden", "true");
+  mediaLightbox.hidden = true;
+  document.body.classList.remove("is-lightbox-open");
+}
+
+mediaImage.addEventListener("click", () => {
+  if (!mediaImage.hidden) {
+    openLightbox("image", mediaImage.src);
+  }
+});
+
+mediaVideo.addEventListener("click", () => {
+  if (!mediaVideo.hidden) {
+    openLightbox("video", mediaVideo.src);
+  }
+});
+
+lightboxCloseBtn.addEventListener("click", closeLightbox);
+
+mediaLightbox.addEventListener("click", (event) => {
+  if (event.target === mediaLightbox) {
+    closeLightbox();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeLightbox();
+  }
+});
 
 function renderPage(index) {
   const page = pages[index];
@@ -266,6 +366,8 @@ function switchPage(nextIndex) {
   if (nextIndex < 0 || nextIndex >= pages.length || nextIndex === currentPage) {
     return;
   }
+
+  closeLightbox();
 
   textPanel.classList.add("is-switching");
   mediaPanel.classList.add("is-switching");

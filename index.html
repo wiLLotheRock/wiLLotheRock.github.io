@@ -83,6 +83,22 @@
       hidden
     >🎵</button>
 
+    <!-- Visor en grande para imagen/video -->
+    <div
+      class="media-lightbox"
+      id="mediaLightbox"
+      role="dialog"
+      aria-label="Vista ampliada"
+      aria-hidden="true"
+      hidden
+    >
+      <button id="lightboxCloseBtn" type="button" aria-label="Cerrar vista ampliada">×</button>
+      <div class="media-lightbox-content" id="lightboxContent">
+        <img id="lightboxImage" alt="Recuerdo en grande" hidden />
+        <video id="lightboxVideo" controls playsinline hidden></video>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
