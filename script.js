@@ -165,7 +165,7 @@ const pages = [
   {
     title: "",
     body: "Nacio una luna hermosa el dia de hoy, una luna que siempre mirare y que siempre me hara sacar una sonrisa.",
-    body2: "Te amo, mi senorita, y feliz cumpleanos c':.",
+    body2: "Te amo, mi senorita, y feliz cumpleaños c':.",
     media: {
       type: "image",
       src: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80",
