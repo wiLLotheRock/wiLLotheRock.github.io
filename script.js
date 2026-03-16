@@ -155,7 +155,7 @@ const pages = [
   {
     title: "",
     body: "Sentirme tan debil y a la vez tan fuerte demuestra un poco de todo lo que pasamos: cosas tristes y felices. Pero no hay persona en el mundo con la que quisiera pasar todo eso que no seas tu.",
-    body2: "Eres maravillosa e increible, Daniela. Mereces un mundo hecho de amor. Si alguna vez corres de tus problemas y sin rumbo, mis brazos siempre estaran abiertos para apoyarte y abrazarte en la tormenta.",
+    body2: "Eres maravillosa e increible Daniela. Mereces un mundo hecho de amor. Si alguna vez corres de tus problemas y sin rumbo, mis brazos siempre estaran abiertos para apoyarte y abrazarte en la tormenta.",
     media: {
       type: "image",
       src: "https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=1000&q=80",
