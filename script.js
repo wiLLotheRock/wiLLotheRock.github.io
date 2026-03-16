@@ -145,7 +145,7 @@ const pages = [
   {
     title: "",
     body: "Tener una relacion contigo, aunque a veces se sintiera agotador y asfixiante, tambien me hacia sentir que tenia a alguien con quien podia ser yo. Detras de todo lo malo, fui muy feliz contigo.",
-    body2: "Si por tu bien debo desaparecer de tu vida, lo hare aunque no quiera irme. Soy feliz a tu lado. No me queda mucho tiempo, pero fue maravilloso pasarlo contigo. Te extrano mucho.",
+    body2: "Si por tu bien debo desaparecer de tu vida, lo hare aunque no quiera irme. Soy feliz a tu lado. No me queda mucho tiempo, pero fue maravilloso pasarlo contigo. Te extraño mucho.",
     media: {
       type: "image",
       src: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=80",
